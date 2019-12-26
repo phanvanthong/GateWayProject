@@ -11,12 +11,12 @@ namespace GetWay.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(Assembly.Load("GetWay.Common"))
+            builder.RegisterAssemblyTypes(Assembly.Load("ManagementLibrary.Common"))
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(Assembly.Load("GetWay.Repository"))
+            builder.RegisterAssemblyTypes(Assembly.Load("ManagementLibrary.Repository"))
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();

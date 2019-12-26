@@ -13,12 +13,12 @@ namespace GetWay.Modules
         {
             //  var dataAccess = Assembly.GetExecutingAssembly();
 
-            builder.RegisterAssemblyTypes(Assembly.Load("GetWay.Common"))
+            builder.RegisterAssemblyTypes(Assembly.Load("ManagementLibrary.Common"))
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(Assembly.Load("GetWay.Service"))
+            builder.RegisterAssemblyTypes(Assembly.Load("ManagementLibrary.Service"))
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
