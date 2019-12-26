@@ -13,17 +13,21 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Cors;
 
 namespace ManagementLibrary.API.Controllers.Authentication
 {
+    [EnableCors()]
     public class ManagerUserController : ApiController
     {
         private getwayDbContext _gateWayDbContext = new getwayDbContext();
 
         public IMapper _mapper;
 
-        private UserManager<IdentityUser> _userManager;
 
+        private readonly SignInManager<IdentityUser> _signInManager;
 
         [HttpGet]
         [Route("api/Users/Login")]
@@ -39,12 +43,13 @@ namespace ManagementLibrary.API.Controllers.Authentication
                 // get data from formdata
                 UserViewModel userViewModel = new UserViewModel
                 {
-                    UserName = Convert.ToString(streamProvider.FormData["UserName"]),
+                    Email = Convert.ToString(streamProvider.FormData["Email"]),
                     Password = Convert.ToString(streamProvider.FormData["Password"])
                 };
                 // mapping view model to entity
-                var createdCar = _mapper.Map<AspNetUser>(userViewModel);
-                //var _user = _gateWayDbContext.AspNetUsers.SingleOrDefault(n => n.UserName == userViewModel.UserName &&  _userManager.HasPasswordAsync(userViewModel,n.PasswordHash));
+                //var createdCar = _mapper.Map<AspNetUser>(userViewModel);
+                var _user = _signInManager.PasswordSignInAsync(userViewModel.Email, userViewModel.Password, userViewModel.Remember, false);
+
                 // return response
                 response.Code = HttpCode.OK;
                 response.Message = MessageResponse.SUCCESS;

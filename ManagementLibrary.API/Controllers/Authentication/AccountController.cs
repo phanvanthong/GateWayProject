@@ -20,7 +20,7 @@ using GetWay.Controller.Models;
 
 namespace GetWay.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
