@@ -92,7 +92,7 @@ namespace GetWay.API.Controllers.Dashboard
                     GarageName = Convert.ToString(streamProvider.FormData["GarageName"]),
                     Address = Convert.ToString(streamProvider.FormData["Address"]),
                     DateStart = Convert.ToDateTime(streamProvider.FormData["DateStart"]),
-                    DateEnd = Convert.ToDateTime(streamProvider.FormData["DateEnd"]),
+                    DateEnd = Convert.ToDateTime(streamProvider.FormData["DateEnd"])
                 };
                 // mapping view model to entity
                 var createdGarage = _mapper.Map<Garage>(GarageViewModel);
@@ -138,11 +138,6 @@ namespace GetWay.API.Controllers.Dashboard
                 
                 // mapping view model to entity
                 var updatedGarage = _mapper.Map<Garage>(GarageViewModel);
-                // update quantity
-                updatedGarage.GarageName = existGarage.GarageName;
-                updatedGarage.Address = existGarage.Address;
-                updatedGarage.DateStart = existGarage.DateStart;
-                updatedGarage.DateEnd = existGarage.DateEnd;
 
                 // update Garage
                 _Garageservice.Update(updatedGarage, updatedGarage.GarageID);

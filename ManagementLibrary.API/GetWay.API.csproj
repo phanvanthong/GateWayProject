@@ -222,6 +222,10 @@
     <Compile Include="AutoMapper\MappingConfig.cs" />
     <Compile Include="Controllers\Authentication\AccountController.cs" />
     <Compile Include="Controllers\Dashboard\ManagerCarController.cs" />
+    <Compile Include="Controllers\Dashboard\ManagerDriverController.cs" />
+    <Compile Include="Controllers\Dashboard\ManagerGarageController.cs" />
+    <Compile Include="Controllers\Dashboard\ManagerPlanController.cs" />
+    <Compile Include="Controllers\Dashboard\ManagerStudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +233,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CarCreateViewModel.cs" />
     <Compile Include="Models\CarUpdateViewModel.cs" />
+    <Compile Include="Models\GarageViewModel.cs" />
+    <Compile Include="Models\PlanViewModel.cs" />
     <Compile Include="Modules\ApplicaitonModule.cs" />
     <Compile Include="Modules\AutoMapperModule.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />

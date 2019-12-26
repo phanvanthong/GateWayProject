@@ -150,17 +150,15 @@ namespace GetWay.API.Controllers.Dashboard
                 // get data from formdata
                 PlanViewModel planViewModel = new PlanViewModel
                 {
-                    PlanID = Guid.Parse(streamProvider.FormData["PlanID"])
+                    CarID = Guid.Parse(streamProvider.FormData["CarID"]),
+                    PlanID = Guid.Parse(streamProvider.FormData["PlanID"]),
+                    DriverID = Guid.Parse(streamProvider.FormData["DriverID"]),
+                    TeacherID = Guid.Parse(streamProvider.FormData["TeacherID"]),
                 };
                 var existPlan = _planservice.Find(planViewModel.PlanID);
                 
                 // mapping view model to entity
                 var updatedPlan = _mapper.Map<Plan>(planViewModel);
-
-                // update quantity
-                updatedPlan.CarID = existPlan.CarID;
-                updatedPlan.CarID = existPlan.CarID;
-                updatedPlan.CarID = existPlan.CarID;
 
                 // update Plan
                 _planservice.Update(updatedPlan, updatedPlan.PlanID);
